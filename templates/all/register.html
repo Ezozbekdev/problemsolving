@@ -1,0 +1,71 @@
+{% extends 'all/base.html' %}
+{% block main %}
+        <div class="Container">
+            <br>
+            <div class="google-mem">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <form method="post" class="form-inline d-flex justify-content-center md-form form-sm">
+                {% csrf_token %}
+                <div class="onl">
+
+                    <hr>
+                    <div class="form-floating mb-3" style="width: 300px;">
+                        <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
+                        <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating mb-3" style="width: 300px;">
+                        <input type="text" class="form-control" id="floatingInput" name="email" placeholder="email">
+                        <label for="floatingInput">email</label>
+                    </div>
+                    <div class="form-floating mb-3" style="width: 300px;">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="password1" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3" style="width: 300px;">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="password2" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Confirm password</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3" style="width: 300px;" >
+                        <button class="btn btn-primary btn-lg" style="width: 300px;">Register</button>
+                    </div>
+                    <hr>
+                    <p style="text-align: center;">I have an account <a href="{% url 'login' %}">Login</a></p>
+                    <hr>
+                    <h6 style="color: red;">{{ form.errors }}</h6>
+                    <hr>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <p style="text-align: center;"><a href="{% url 'main' %}">Go home</a></p>
+                    <hr>
+                </div>
+            </form>
+
+        </div>
+{% endblock main %}

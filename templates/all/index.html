@@ -1,0 +1,54 @@
+{% extends 'all/base.html' %}
+{% block main %}
+        <div class="container">
+            <br>
+            <div class="google-mem">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-success" role="status">
+                    <span class="   visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <hr>
+            <form class="form-inline d-flex justify-content-center md-form form-sm">
+                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" name="search" aria-label="Search">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <hr>
+            <div style="text-align: center">
+                <a href="{% url 'main' %}" class="btn btn-outline-primary">home</a>
+                {% if request.user_is_authenticated %}
+                    <span class="hello-msg">{{ request.user }}</span>
+                    <a href="{% url 'logout' %}">logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary" aria-current="page">login</a>
+                {% endif %}
+            </div>
+            
+            <ul class="bars">
+                {% if problems %}
+                    {% for p in problems %}
+                        <hr>
+                        <li style="list-style-type: none;">{{ p.title }} <a href="{% url 'detail' p.id %}">View</a></li>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <br>
+                    <h1>Base have not problem list</h1>
+                {% endif %}
+            </ul>
+        </div>
+{% endblock main %}

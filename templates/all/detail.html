@@ -1,0 +1,70 @@
+{% extends 'all/base.html' %}
+{% block main %}
+        <div class="all-iltem">
+            <br>
+            <br>
+            <div class="main">
+                <div class="google-mem">
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <hr>
+                <h1>{{ obj.title }}</h1>
+                <hr>
+                <a href="{% url 'main' %}" style="text-align: center;"><p>Go home</p></a>
+                <hr>
+                <p class="text-center">
+                     {{ obj.description }}
+                </p>
+                <hr>
+                <img id="myImg" src="{{ obj.img.url }}" alt="Northern Lights, Norway" width="300" height="200">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                </div>
+                    <hr>
+                <a href="{{ obj.code.url }}" download="{{ obj.code.url }}"><button class="btn btn-primary btn-lg disabled" type="button"  aria-disabled="true">Download code</button></a>
+                <br>
+                <hr>
+                <div class="comment-list">
+                    <div class="accordion" id="accordionExample">
+                        {% if not  obj.comments.all %}
+                            no comment
+                        {% else %}
+                            {% for comment in obj.comments.all %}
+                                <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" >
+                                          {{ comment.username }}
+                                        </button>
+                                      </h2>
+                                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                          <p>{{ comment.comment }} <hr><em>{{ comment.date_added }}</em></p>
+                                        </div>
+                                      </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                      </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+{% endblock main %}
